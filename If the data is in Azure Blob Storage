@@ -1,0 +1,11 @@
+from azure.storage.blob import BlobServiceClient
+
+# Connect to Blob Storage
+connection_string = "your_connection_string"
+blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+container_name = "your_container_name"
+blob_name = "your_blob_name"
+
+# Download blob content
+blob_client = blob_service_client.get_blob_client(container=container_name, blob=blob_name)
+data = blob_client.download_blob().readall()
